@@ -16,19 +16,16 @@ const Home = props => {
         }))
             .then(response => (console.log(response)))
             .catch(error => console.log(error))
+
+        setData([...datum, data])
     };
 
-    const [data, setData] = useState(props.initialFormState);
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setData(...data, {[name]: value });
-    };
     return (
         <section className="section">
         <div className="container mt-5">
             <div className="columns">
                 <div className="column">
-                    <HomeForm/>
+                    <HomeForm addData={addData} initialFormState={initialFormState}/>
                 </div>
                 <div className="column">
                     Fourth column
