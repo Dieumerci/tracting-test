@@ -1,23 +1,29 @@
-version: '2'
+version: '3.8'
 services:
-  db:
-    image: mdillon/postgis:9.6
+  database:
+    image: postgres:11.5
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    env_file:
-      - containers/development/.env
-  app:
-    tty: true
-    stdin_open: true
-    build:
-      context: .
-      dockerfile: containers/development/Dockerfile
-    env_file:
-      - containers/development/.env
-    command: containers/scripts/wait-for-it.sh db:5432 -- containers/development/entrypoint
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     depends_on:
-      - db
+      - database
+    # Specify the values of the environment variables
+    # used in this container.
+    environment:
+      RAILS_ENV: development
+      DATABASE_NAME: boats_development
+      DATABASE_USER: boats_development
+      DATABASE_PASSWORD:
+      DATABASE_HOST: database
     volumes:
-      - .:/usr/app/${APP_NAME}
+      - .:/code:cached
     ports:
       - 3000:3000
+volumes:
+  db_data:
