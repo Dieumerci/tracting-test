@@ -6,7 +6,7 @@ import TableList from '../partials/TableList';
 const Home = props => {
 
     const initialFormState = {
-        description:''
+        file:''
     };
 
     const addPost = post => {
@@ -17,7 +17,7 @@ const Home = props => {
         axios.post(url, qs.stringify(
             {
                         post: {
-                            description: post.description
+                            file: post.file
                         }
                     }
                     ))
