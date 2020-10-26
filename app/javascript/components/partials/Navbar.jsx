@@ -39,9 +39,9 @@ const Navbar = () => {
                                 <span className="navbar-item">
                       <a className="button is-info is-inverted">
                         <span className="icon">
-                              <i className="fab fa-github"></i>
+                              <i className="fas fa-sign-in-alt"></i>
                             </span>
-                            <span>Download</span>
+                            <span>Login</span>
                           </a>
                         </span>
                             </div>
@@ -54,9 +54,10 @@ const Navbar = () => {
             <div class="hero-body mt-5">
                 <div class="container has-text-centered mt-5">
                     <h1 class="title">
-                        Title
+                        The eastiest way to monitor and dispath
                     </h1>
-                    <img src={Logo} height="100" width="100"/>
+
+                    <img src={Logo} height="200" width="200"/>
                 </div>
             </div>
 

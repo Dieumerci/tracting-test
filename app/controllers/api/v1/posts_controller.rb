@@ -12,6 +12,10 @@ class Api::V1::PostsController < Api::V1::BaseController
     puts post.description
   end
 
+  def parser_method(file_path)
+
+  end
+
   private
 
   def post_params
