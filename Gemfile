@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'responders'
 gem 'smarter_csv'
 gem 'csv_fast_importer'
+gem 'activerecord-postgis-adapter'
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
