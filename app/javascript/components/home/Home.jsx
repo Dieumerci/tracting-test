@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import HomeForm from './HomeForm';
+import axios from 'axios';
+import TableList from '../partials/TableList';
 
 const Home = props => {
 
@@ -7,28 +9,30 @@ const Home = props => {
         description:''
     };
 
-    const addData = data => {
+    const addPost = post => {
         const qs = require('qs');
-        axios.post('/api/v1/home', qs.stringfy({
-            data: {
-                description: data.description
-            }
-        }))
-            .then(response => (console.log(response)))
-            .catch(error => console.log(error))
+        const url = "/api/v1/posts/";
+        const token = document.querySelector('[name=csrf-token]').content
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+        axios.post(url, qs.stringify(
+            {
+                        post: {
+                            description: post.description
+                        }
+                    }
+                    ))
+                    .then(response => (console.log(response)))
+                    .catch(error => console.log(error))
 
-        setData([...datum, data])
+
     };
 
     return (
         <section className="section">
         <div className="container mt-5">
             <div className="columns">
-                <div className="column">
-                    <HomeForm addData={addData} initialFormState={initialFormState}/>
-                </div>
-                <div className="column">
-                    Fourth column
+                <div className="column is-centered">
+                    <HomeForm addPost={addPost} initialFormState={initialFormState}/>
                 </div>
             </div>
         </div>
