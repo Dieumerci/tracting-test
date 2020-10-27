@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import Logo from 'images/school.png';
-import Home from '../home/Home';
 const Navbar = () => {
     const styleObj = {
         fontSize: 26,
@@ -51,9 +50,9 @@ const Navbar = () => {
             </div>
 
 
-            <div class="hero-body mt-5">
-                <div class="container has-text-centered mt-5">
-                    <h1 class="title">
+            <div className="hero-body mt-5">
+                <div className="container has-text-centered mt-5">
+                    <h1 className="title">
                         The eastiest way to monitor and dispath
                     </h1>
 

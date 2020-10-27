@@ -10,9 +10,9 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def create
     file_path = params[:file]
-    file_parse(file_path)
-    # post = Post.create(post_params)
-    # puts post.description
+    puts file_path
+    # Location.distance_calculation(params[:file])
+    # redirect_to root_url, notice: "Successfully Imported Data!!!"
   end
 
   private
@@ -21,8 +21,9 @@ class Api::V1::PostsController < Api::V1::BaseController
     params.require(:post).permit(:description)
   end
 
-  def file_parse(file_path)
-    CSV.foreach(file_path, quote_char: '"', col_sep: ';', row_sep: :auto, headers: true) do |row|
+  def file_parse(file)
+    location = []
+    CSV.foreach(file.path, headers: true, :header_converters => [:downcase]) do |row|
       puts row[0]
       puts row['xxx']
     end
