@@ -10,7 +10,7 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def create
     file_path = params[:file]
-    puts file_path
+    puts "file_path"
     # Location.distance_calculation(params[:file])
     # redirect_to root_url, notice: "Successfully Imported Data!!!"
   end
