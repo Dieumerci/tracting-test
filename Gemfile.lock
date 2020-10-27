@@ -144,6 +144,7 @@ GEM
     rgeo-activerecord (6.2.1)
       activerecord (>= 5.0)
       rgeo (>= 1.0.0)
+    rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -154,6 +155,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    simple_xlsx_reader (1.0.4)
+      nokogiri
+      rubyzip
     smarter_csv (1.2.6)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -206,6 +210,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.4)
   responders
   sass-rails (>= 6)
+  simple_xlsx_reader (~> 1.0, >= 1.0.4)
   smarter_csv
   spring
   spring-watcher-listen (~> 2.0.0)

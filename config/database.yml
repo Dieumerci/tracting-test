@@ -7,7 +7,6 @@ default: &default
 
 development:
   <<: *default
-  username: postgres
   adapter: postgis
   host: localhost
   database: geolocator_development
