@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import axios from 'axios';
 
 const TableList = props => {
@@ -10,21 +11,30 @@ const TableList = props => {
         }
 
         fetchData();
-    }, []);
+    });
 
     return (
-        <table className="table">
+        <table className="table is-bordered">
             <thead>
                 <tr>
                     <th><abbr title="Position">#No</abbr></th>
-                    <th>Name</th>
+                    <th>Passenger</th>
+                    <th>Location</th>
+                    <th>Destination</th>
+                    <th>Timeslot</th>
+                    <th><button className="button ">Group</button></th>
                 </tr>
             </thead>
+
             <tbody>
             { data.map( d =>
                 <tr key={d.id}>
                     <th>{d.id}</th>
-                    <td>{d.description}</td>
+                    <td>{d.passenger}</td>
+                    <td>{d.location}</td>
+                    <td>{d.destination}</td>
+                    <td>{d.timeslot}</td>
+                    <td></td>
                 </tr>
             )}
             </tbody>

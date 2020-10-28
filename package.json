@@ -13,6 +13,7 @@
     "prop-types": "^15.7.2",
     "qs": "^6.9.4",
     "react": "^17.0.1",
+    "react-bulma-components": "^3.4.0",
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.2.1",
     "react-dropzone-uploader": "^2.11.0",

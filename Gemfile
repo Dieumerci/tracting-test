@@ -27,7 +27,7 @@ gem 'simple_xlsx_reader', '~> 1.0', '>= 1.0.4'
 gem 'csv_fast_importer'
 gem 'activerecord-postgis-adapter'
 gem 'geocoder', '~> 1.3', '>= 1.3.7'
-
+gem "rgeo"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

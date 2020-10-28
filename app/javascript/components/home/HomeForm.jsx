@@ -4,9 +4,6 @@ class HomeForm extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            courseID: '',
-            instructorName: '',
-            courseCode: '',
             selectedFile: null
         };
         this.textInput = React.createRef();

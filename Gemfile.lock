@@ -209,6 +209,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   responders
+  rgeo
   sass-rails (>= 6)
   simple_xlsx_reader (~> 1.0, >= 1.0.4)
   smarter_csv

@@ -38,14 +38,6 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     depends_on:
       - db
-    # Specify the values of the environment variables
-    # used in this container.
-    environment:
-      RAILS_ENV: development
-      DATABASE_NAME: boats_development
-      DATABASE_USER: boats_development
-      DATABASE_PASSWORD:
-      DATABASE_HOST: database
     volumes:
       - .:/code:cached
     ports:

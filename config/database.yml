@@ -17,9 +17,3 @@ test:
   <<: *default
   database: geolocator_test
 
-
-production:
-  <<: *default
-  database: geolocator_production
-  username: geolocator
-  password: <%= ENV['GEOLOCATOR_DATABASE_PASSWORD'] %>
