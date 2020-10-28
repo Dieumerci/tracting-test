@@ -8,14 +8,12 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def create
-    name = params[:file]
-    file_extension = File.extname(name.original_filename)
-    puts file_extension
-    # Passenger.process_upload(params[:file])
-    # redirect_to root_url, notice: "Successfully Imported Data!!!"
+    Passenger.process_upload(params[:file])
+    redirect_to root_url, notice: "Successfully Imported Data!!!"
   end
 
   def calculate_and_group
+  #  perform query function for grouping
 
   end
 

@@ -1,5 +1,5 @@
 class Passenger < ApplicationRecord
-  reverse_geocoded_by :location_lat, :location_long, :destination_lat, :destination_long
+  geocoded_by :location_lat, :location_long, :destination_lat, :destination_long
   after_validation :reverse_geocode
 
   def self.process_upload(file_path)
@@ -61,5 +61,26 @@ class Passenger < ApplicationRecord
       result = "outbound"
     end
     return  result
+  end
+
+  def self.g_near(point, distance)
+    where(
+        'ST_DWithin(coords, :point, :distance)',
+        { point: Geo.to_wkt(point), distance: distance * 1000 }
+    )
+  end
+
+  def self.g_within_box(sw_point, ne_point)
+    where(
+        "coords && ST_MakeEnvelope(:sw_lon, :sw_lat, :ne_lon, :ne_lat, #{
+        Geo::SRID
+        })",
+        {
+            sw_lon: sw_point.longitude,
+            sw_lat: sw_point.latitude,
+            ne_lon: ne_point.longitude,
+            ne_lat: ne_point.latitude
+        }
+    )
   end
 end

@@ -1,48 +1,20 @@
-version: '3.8'
+
+version: "3"
 services:
   db:
-    image: kartoza/postgis:12.0
+    image: "postgis/postgis"
     volumes:
-      - postgis-data:/var/lib/postgresql
-      - dbbackups:/backups
-    environment:
-      - POSTGRES_DB=gis
-      - POSTGRES_USER=docker
-      - POSTGRES_PASS=docker
-      - ALLOW_IP_RANGE=0.0.0.0/0
-      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+      - ./tmp/db:/var/lib/postgresql/data
     ports:
-      - 25432:5432
-    restart: on-failure
-    healthcheck:
-      test: "exit 0"
-
-  dbbackups:
-    image: kartoza/pg-backup:12.0
-    hostname: pg-backups
-    volumes:
-      - dbbackups:/backups
+      - "5432:5432"
     environment:
-      - DUMPPREFIX=PG_db
-      - POSTGRES_USER=docker
-      - POSTGRES_PASS=docker
-      - POSTGRES_PORT=5432
-      - POSTGRES_HOST=db
-      - POSTGRES_DBNAME=gis
-    restart: on-failure
-    depends_on:
-      database:
-        condition: service_healthy
+      - POSTGRES_PASSWORD=password
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
     depends_on:
       - db
-    volumes:
-      - .:/code:cached
-    ports:
-      - 3000:3000
-
-volumes:
-  dbbackups:
-  postgis-data:
