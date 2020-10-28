@@ -16,6 +16,6 @@ $ docker-compose run web rails db:migrate
 ```
 4.. Next run docker app:
 ```
-$ docker-compose run web
+$ docker-compose up --build
 ```
 
