@@ -14,7 +14,7 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def calculate_and_group
   #  perform query function for grouping
-
+  # Get all_passengers with rides within a radius of 0.15km from passenger.location(passenger)
   end
 
 
